@@ -1,4 +1,5 @@
 import { sql } from '@vercel/postgres';
+
 import {
   CustomerField,
   CustomersTableType,
@@ -11,19 +12,20 @@ import { formatCurrency } from './utils';
 
 export async function fetchRevenue() {
   try {
-    // Artificially delay a response for demo purposes.
-    // Don't do this in production :)
+    //Artificially delay a response for demo purposes.
+    //Don't do this in production :)
 
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error:', error);
+    console.error('Database Error:', error.stack || error.message);
+    console.log('POSTGRES_URL:', process.env.POSTGRES_URL);
     throw new Error('Failed to fetch revenue data.');
   }
 }
