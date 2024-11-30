@@ -24,7 +24,7 @@ export async function fetchRevenue() {
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error:', error.stack || error.message);
+    console.error('Database Error:', error);
     console.log('POSTGRES_URL:', process.env.POSTGRES_URL);
     throw new Error('Failed to fetch revenue data.');
   }
