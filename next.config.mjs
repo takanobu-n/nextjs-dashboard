@@ -2,7 +2,8 @@
  
 const nextConfig = {
     experimental: {
-      ppr: 'incremental',
+      //ppr: 'incremental',
+      //next.jsのバージョン的に使えないみたい
     },
   };
    
